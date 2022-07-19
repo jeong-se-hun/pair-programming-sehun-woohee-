@@ -8,7 +8,7 @@
     $toggleLayer.classList.toggle('hide');
   };
 
-  document.querySelector('body').addEventListener('click', (e) => {
+  document.querySelector('body').addEventListener('click', e => {
     if (
       e.target.classList.contains('toggle-popup') ||
       e.target.classList.contains('cancel') ||
@@ -22,7 +22,7 @@
       addContent(e);
     }
   });
-  document.querySelector('body').addEventListener('keyup', (e) => {
+  document.querySelector('body').addEventListener('keyup', e => {
     if (e.key !== 'Enter') return;
     addContent(e);
   });
