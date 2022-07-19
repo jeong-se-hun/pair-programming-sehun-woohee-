@@ -25,11 +25,12 @@
       /* 팝업을 위한 CSS */
       .toggle-layer {
         position: absolute;
+        z-index: 99;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.4);
       }
 
       .toggle-box {
@@ -51,7 +52,7 @@
         padding-top: 30px;
       }
 
-      .toggle-box .cencel-icon {
+      .toggle-box .cancel-icon {
         position: absolute;
         top: 20px;
         right: 20px;
@@ -79,7 +80,7 @@
     <div class="toggle-layer hide">
       <div class="toggle-box">
         <h1>Hello!</h1>
-        <button class="cencel cencel-icon">X</button>
+        <button class="cancel cancel-icon">X</button>
         <p class="content">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quos et hic sunt, facilis sit magnam libero
           optio, repudiandae eligendi eius ipsam? Quo, tempore obcaecati. Aut recusandae mollitia totam quo.
