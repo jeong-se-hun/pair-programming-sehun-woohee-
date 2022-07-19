@@ -10,13 +10,11 @@
     };
   })();
 
-  $container.addEventListener('click', (e) => {
+  $container.addEventListener('click', e => {
     const $counter = document.querySelector('.counter');
 
-    if (e.target.closest('button').classList.contains('increase'))
-      $counter.textContent = changeCount.increase();
+    if (e.target.closest('button').classList.contains('increase')) $counter.textContent = changeCount.increase();
 
-    if (e.target.closest('button').classList.contains('decrease'))
-      $counter.textContent = changeCount.decrease();
+    if (e.target.closest('button').classList.contains('decrease')) $counter.textContent = changeCount.decrease();
   });
 })();
