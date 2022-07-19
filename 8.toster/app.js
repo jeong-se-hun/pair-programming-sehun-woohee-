@@ -4,8 +4,10 @@
   $body.appendChild($toastContainer);
 
   const render = () => {
-    [...$toastContainer.children].forEach((toast, i, arr) => {
-      toast.style.bottom = `${(arr.length - 1 - i) * 100}px`;
+    [...$toastContainer.children].forEach(($toast, i, arr) => {
+      $toast.style.bottom = `${
+        (arr.length - 1 - i) * parseInt(getComputedStyle($toast).getPropertyValue('--toast-height'), 10)
+      }px`;
     });
   };
 
@@ -31,7 +33,7 @@
 
     setTimeout(() => {
       if ($toast.matches('div>.toast')) $toastContainer.removeChild($toast);
-    }, 7000);
+    }, 3000);
   };
 
   $body.addEventListener('click', e => {
