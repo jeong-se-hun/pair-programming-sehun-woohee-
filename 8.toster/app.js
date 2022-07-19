@@ -10,15 +10,13 @@
   };
 
   // TODO: render 분리할까요??
-  const showMessage = (element) => {
+  const showMessage = element => {
     const state = element.textContent.toLowerCase();
     const $toast = document.createElement('div');
 
     $toast.classList.add('toast', state);
     $toast.innerHTML = `
-    <h4 class="toast-title">${
-      state === 'success' ? 'Well done!' : 'Check it out!'
-    }</h4>
+    <h4 class="toast-title">${state === 'success' ? 'Well done!' : 'Check it out!'}</h4>
     <div class="toast-message">
       <svg width="24" height="24">
         <use xlink:href="#${state}" />
@@ -36,7 +34,7 @@
     }, 7000);
   };
 
-  $body.addEventListener('click', (e) => {
+  $body.addEventListener('click', e => {
     if (e.target.tagName === 'BUTTON') showMessage(e.target);
 
     if (e.target.classList.contains('toast-close')) {
