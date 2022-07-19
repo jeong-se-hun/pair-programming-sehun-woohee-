@@ -1,6 +1,7 @@
 // fetch fake data
 // prettier-ignore
-(() =>{const state={
+(() =>{
+  const state={
   tabsData:[],
   activeTabId:0
 }
@@ -39,7 +40,7 @@ const fetchTabsData = () =>
 window.addEventListener('DOMContentLoaded', fetchTabsData);
 
 const render = () => {
-  document.querySelector('.tabs').innerHTML = `
+  $tabs.innerHTML = `
 <nav>
 ${state.tabsData.map((data, index) => `<div class="tab" data-index="${index}">${data.title}</div>`).join('')}
 
