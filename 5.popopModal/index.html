@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Popup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Open Sans';
+        font-weight: 300;
+      }
+      .title {
+        color: #db5b33;
+        font-weight: 300;
+        text-align: center;
+      }
+      /* 팝업을 위한 CSS */
+      .toggle-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      .toggle-box {
+        position: relative;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 520px;
+        min-height: 200px;
+        background-color: white;
+        padding: 0 40px 30px;
+        font-weight: bold;
+      }
+
+      .toggle-box h1 {
+        color: #db5b33;
+        font-weight: 800;
+        text-align: center;
+        padding-top: 30px;
+      }
+
+      .toggle-box .cencel-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: none;
+        background-color: inherit;
+
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      .toggle-box .toggle-input {
+        margin-top: 20px;
+      }
+    </style>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <h1 class="title">Popup</h1>
+    <button class="toggle-popup">toggle popup</button>
+
+    <div class="toggle-layer">
+      <div class="toggle-box">
+        <h1>Hello!</h1>
+        <button class="cencel cencel-icon">X</button>
+        <p class="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora quos et hic sunt, facilis sit magnam libero
+          optio, repudiandae eligendi eius ipsam? Quo, tempore obcaecati. Aut recusandae mollitia totam quo.
+        </p>
+        <input class="toggle-input" />
+        <button class="ok">OK</button>
+        <button class="cancel">Cancel</button>
+      </div>
+    </div>
+    <!-- 팝업을 위한 HTML -->
+    <p class="popup-message"></p>
+  </body>
+</html>
