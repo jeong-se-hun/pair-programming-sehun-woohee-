@@ -1,19 +1,19 @@
 (() => {
-  $palindromeForm = document.querySelector('.palindrome-checker');
+  const $palindromeForm = document.querySelector('.palindrome-checker');
+
+  const checkPalindrome = str => {
+    const string = str.toUpperCase().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>{}[\]/ ]/gim, '');
+    return !!string && string.split('').reverse().join('') === string;
+  };
 
   $palindromeForm.addEventListener('submit', e => {
     e.preventDefault();
 
-    const palindromeInputValue = document.querySelector('.palindrome-input').value;
+    const palindromeInput = document.querySelector('.palindrome-input');
 
-    document.querySelector('.palindrome-result').innerHTML = checkPalindrome(palindromeInputValue)
-      ? `"${palindromeInputValue}" is a palindrome`
-      : `"${palindromeInputValue}" is not a palindrome`;
-    palindromeInputValue = '';
+    document.querySelector('.palindrome-result').innerHTML = checkPalindrome(palindromeInput.value)
+      ? `"${palindromeInput.value}" is a palindrome`
+      : `"${palindromeInput.value}" is not a palindrome`;
+    palindromeInput.value = '';
   });
-
-  const checkPalindrome = str => {
-    const string = str.toUpperCase().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gim, '');
-    return !!string && string.split('').reverse().join('') === string;
-  };
 })();
