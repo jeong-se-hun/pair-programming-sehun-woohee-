@@ -37,7 +37,6 @@
       this.interval = setInterval(this.startTimer.bind(this, 10));
     },
     stop() {
-      console.log(this.interval);
       clearInterval(this.interval);
     },
     reset() {
