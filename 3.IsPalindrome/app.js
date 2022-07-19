@@ -2,6 +2,7 @@ $palindromeForm = document.querySelector(".palindrome-checker");
 
 $palindromeForm.addEventListener("submit", (e) => {
   e.preventDefault();
+
   const palindromeInput = document.querySelector(".palindrome-input");
   document.querySelector(".palindrome-result").innerHTML = checkPalindrome(
     palindromeInput.value
