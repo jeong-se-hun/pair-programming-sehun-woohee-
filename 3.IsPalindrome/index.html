@@ -1,82 +1,80 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>isPalindrome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400" rel="stylesheet" />
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>isPalindrome</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400" rel="stylesheet" />
-  <style>
-    *,
-    *:before,
-    *:after {
-      box-sizing: border-box;
-    }
+      body {
+        font-family: 'Open Sans';
+        font-weight: 300;
+        background-color: #f0f3f4;
+      }
 
-    body {
-      font-family: 'Open Sans';
-      font-weight: 300;
-      background-color: #f0f3f4;
-    }
+      .title {
+        color: #db5b33;
+        font-weight: 300;
+        text-align: center;
+      }
 
-    .title {
-      color: #db5b33;
-      font-weight: 300;
-      text-align: center;
-    }
+      .palindrome-checker {
+        width: 450px;
+        height: 200px;
+        background-color: #ffffff;
+        margin: 40px auto;
+        padding: 50px 30px;
+        border-radius: 8px;
+        box-shadow: 0 20px 25px rgba(0, 0, 0, 0.18);
+      }
 
-    .palindrome-checker {
-      width: 450px;
-      height: 200px;
-      background-color: #ffffff;
-      margin: 40px auto;
-      padding: 50px 30px;
-      border-radius: 8px;
-      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.18);
-    }
+      .palindrome-input {
+        width: 240px;
+        padding: 10px 5px;
+        font-size: 1rem;
+        border: none;
+        border-bottom: 2px solid #d5d5d5;
+        outline: none;
+      }
 
-    .palindrome-input {
-      width: 240px;
-      padding: 10px 5px;
-      font-size: 1rem;
-      border: none;
-      border-bottom: 2px solid #d5d5d5;
-      outline: none;
-    }
+      .palindrome-input:focus {
+        border-bottom: 2px solid #673ab7;
+      }
 
-    .palindrome-input:focus {
-      border-bottom: 2px solid #673ab7;
-    }
+      .palindrome-checkbox {
+        width: 100px;
+        margin-left: 35px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        background-color: #673ab7;
+        border: none;
+        border-radius: 3px;
+        color: #ffffff;
+        cursor: pointer;
+      }
 
-    .palindrome-checkbox {
-      width: 100px;
-      margin-left: 35px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      background-color: #673ab7;
-      border: none;
-      border-radius: 3px;
-      color: #ffffff;
-      cursor: pointer;
-    }
+      .palindrome-result {
+        margin-top: 35px;
+        color: #673ab7;
+        font-weight: 400;
+      }
+    </style>
+    <script defer src="app.js"></script>
+  </head>
 
-    .palindrome-result {
-      margin-top: 35px;
-      color: #673ab7;
-      font-weight: 400;
-    }
-  </style>
-  <script defer src="app.js"></script>
-</head>
-
-<body>
-  <h1 class="title">is palindrome?</h1>
-  <form class="palindrome-checker">
-    <input type="text" class="palindrome-input" placeholder="Enter a word to check" autofocus />
-    <button class="palindrome-checkbox">Check</button>
-    <p class="palindrome-result"></p>
-  </form>
-</body>
-
+  <body>
+    <h1 class="title">is palindrome?</h1>
+    <form class="palindrome-checker">
+      <input type="text" class="palindrome-input" placeholder="Enter a word to check" autofocus />
+      <button class="palindrome-checkbox">Check</button>
+      <p class="palindrome-result"></p>
+    </form>
+  </body>
 </html>
