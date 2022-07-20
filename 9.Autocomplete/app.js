@@ -8,20 +8,16 @@ const $autocompleteSuggestList = document.querySelector('.autocomplete-suggest-l
 const $autocompleteToggleButton = document.querySelector('.autocomplete-toggle-button');
 
 const render = str => {
+  // prettier-ignore
   $autocompleteSuggestList.innerHTML = countryCode
     .filter(country => (str ? _.includes(country[1].toLowerCase(), str.toLowerCase()) : true))
-    .map(
-      (country, index) =>
-        `
-   <li data-id="${index}" tabindex="${index + 1}">
-     <span class="country">
-       <img src="images/flag/${country[0]}.svg" />
-       <span>${country[1]}</span>
-     </span>
-   </li>
-   `
-    )
-    .join('');
+    .map(([code, country], index) => `
+      <li data-id="${index+1}" tabindex="${index + 1}">
+        <span class="country">
+          <img src="images/flag/${code}.svg" />
+          <span>${country}</span>
+        </span>
+      </li>`).join('');
 };
 
 document.querySelector('.autocomplete-toggle-button').addEventListener('click', () => {
@@ -41,6 +37,18 @@ $autocompleteSearch.addEventListener(
     { leading: false }
   )
 );
+
+
+$autocompleteSearch.addEventListener('keydown', e => {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    console.log($autocompleteSuggestList.children[0]);
+    $autocompleteSuggestList.children[0].focus();
+  }
+});
+document.querySelector('body').addEventListener('keydown', e => {
+  console.log(document.activeElement);
+});
 
 $autocompleteSuggestList.addEventListener('focusout', e => {
   if (e.target.parentNode.lastElementChild === e.target) console.log('jo');
@@ -115,3 +123,4 @@ $autocompleteSuggestList.addEventListener('focusout', e => {
 
 //   focusedElementBeforeModal.focus();
 // }
+
