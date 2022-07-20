@@ -42,18 +42,18 @@ $autocompleteSearch.addEventListener(
   )
 );
 
-$autocompleteSuggestList.lastElementChild.addEventListener('keydown', e => {
-  if (e.keyCode !== 9) return;
-  const lastTabStop = $autocompleteSuggestList.lastElementChild;
-  const firstTabStop = $autocompleteToggleButton;
-  if (document.activeElement === lastTabStop) {
-    e.preventDefault();
-    firstTabStop.focus();
-  }
+$autocompleteSuggestList.addEventListener('focusout', e => {
+  if (e.target.parentNode.lastElementChild === e.target) console.log('jo');
 });
 
-// $autocompleteSuggestList.addEventListener('focusout', e => {
-//   if (e.target.parentNode.lastElementChild === e.target) console.log('jo');
+// $autocompleteSuggestList.lastElementChild.addEventListener('keydown', e => {
+//   if (e.keyCode !== 9) return;
+//   const lastTabStop = $autocompleteSuggestList.lastElementChild;
+//   const firstTabStop = $autocompleteToggleButton;
+//   if (document.activeElement === lastTabStop) {
+//     e.preventDefault();
+//     firstTabStop.focus();
+//   }
 // });
 
 // let focusedElementBeforeModal;
