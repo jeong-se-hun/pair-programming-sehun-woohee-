@@ -1,10 +1,8 @@
 (() => {
   const $body = document.querySelector('body');
-  const $toastContainer = document.createElement('div');
-  $body.appendChild($toastContainer);
 
   const render = () => {
-    [...$toastContainer.children].forEach(($toast, i, arr) => {
+    [...document.querySelectorAll('.toast')].forEach(($toast, i, arr) => {
       $toast.style.bottom = `${
         (arr.length - 1 - i) * parseInt(getComputedStyle($toast).getPropertyValue('--toast-height'), 10)
       }px`;
@@ -27,12 +25,12 @@
     </div>
     <a class="toast-close">&times;</a>
    `;
-    $toastContainer.appendChild($toast);
+    $body.appendChild($toast);
 
     render();
 
     setTimeout(() => {
-      if ($toast.matches('div>.toast')) $toastContainer.removeChild($toast);
+      if ($toast.matches('body>.toast')) $body.removeChild($toast);
     }, 3000);
   };
 
@@ -40,8 +38,7 @@
     if (e.target.tagName === 'BUTTON') showMessage(e.target);
 
     if (e.target.classList.contains('toast-close')) {
-      $toastContainer.removeChild(e.target.parentNode);
-
+      $body.removeChild(e.target.parentNode);
       render();
     }
   });
