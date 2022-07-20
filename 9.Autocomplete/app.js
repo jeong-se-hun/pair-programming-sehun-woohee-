@@ -38,7 +38,6 @@ $autocompleteSearch.addEventListener(
   )
 );
 
-
 $autocompleteSearch.addEventListener('keydown', e => {
   if (e.key === 'Tab') {
     e.preventDefault();
@@ -51,7 +50,19 @@ document.querySelector('body').addEventListener('keydown', e => {
 });
 
 $autocompleteSuggestList.addEventListener('focusout', e => {
-  if (e.target.parentNode.lastElementChild === e.target) console.log('jo');
+  if (e.target.parentNode.lastElementChild === e.target) $autocompleteToggleButton.focus();
+});
+
+$autocompleteToggleButton.addEventListener('focusout', e => {
+  if ($suggester.style.display === 'block' && e.key === 'Tab') {
+    $autocompleteSearch.focus();
+  }
+});
+$autocompleteSearch.addEventListener('keydown', e => {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    $autocompleteSuggestList.firstElementChild.focus();
+  }
 });
 
 // $autocompleteSuggestList.lastElementChild.addEventListener('keydown', e => {
@@ -123,4 +134,3 @@ $autocompleteSuggestList.addEventListener('focusout', e => {
 
 //   focusedElementBeforeModal.focus();
 // }
-
