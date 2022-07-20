@@ -44,7 +44,7 @@ $autocompleteSearch.addEventListener('keydown', e => {
     $autocompleteSuggestList.children[0].focus();
   }
 });
-document.querySelector('body').addEventListener('keydown', e => {
+document.querySelector('body').addEventListener('keydown', () => {
   console.log(document.activeElement);
 });
 
