@@ -24,7 +24,6 @@ document.querySelector('.autocomplete-toggle-button').addEventListener('click', 
   $suggester.style.display = 'block';
   render();
   $autocompleteSearch.focus();
-  // TODO: foreach 밖에 없나???
 });
 
 $autocompleteSearch.addEventListener(
