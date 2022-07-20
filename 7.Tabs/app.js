@@ -4,23 +4,21 @@
 
   
 const state={
+
   tabsData:[],
   activeTabId:0
+
 }
 
 const $tabs = document.querySelector('.tabs');
 const render = () => {
   $tabs.innerHTML = `
-<nav>
-${state.tabsData.map((data, index) => `<div class="tab" data-index="${index}">${data.title}</div>`).join('')}
-
-<span class="glider" style="left:${
-    getComputedStyle($tabs).getPropertyValue('--tab-width') * +state.activeTabId
-  }px" ></span>
-</nav>
-${state.tabsData
-  .map((data, index) => `<div class="tab-content ${index === state.activeTabId ? 'active' : ''}">${data.content}</div>`)
-  .join('')}
+  <nav>
+    ${state.tabsData.map((data, index) => `<div class="tab" data-index="${index}">${data.title}</div>`).join('')}
+    <span class="glider" style="left:${getComputedStyle($tabs).getPropertyValue('--tab-width') * +state.activeTabId}px" >
+    </span>
+  </nav>
+   ${state.tabsData.map((data, index) => `<div class="tab-content ${index === state.activeTabId ? 'active' : ''}">${data.content}</div>`).join('')}
   `;
   // TODO: 200? 고정값 사용?
 };

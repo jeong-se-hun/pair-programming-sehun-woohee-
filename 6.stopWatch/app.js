@@ -7,9 +7,11 @@
     startTime: 0,
     elapsedTime: 0,
     interval: null,
+
     print(text) {
       document.querySelector('.display').innerHTML = text;
     },
+
     addZero(number) {
       if (number < 10) {
         return '0' + number;
@@ -19,6 +21,7 @@
       }
       return number;
     },
+
     timeToString(time) {
       const date = new Date(time);
       const minutes = date.getUTCMinutes();
@@ -26,19 +29,23 @@
       const millisecond = date.getMilliseconds();
       return `${this.addZero(minutes)}:${this.addZero(seconds)}:${this.addZero(millisecond)}`;
     },
+
     startTimer() {
       this.elapsedTime = Date.now() - this.startTime;
       const time = this.timeToString(this.elapsedTime);
       this.print(time);
     },
+
     start() {
       clearInterval(this.interval);
       this.startTime = Date.now() - this.elapsedTime;
       this.interval = setInterval(this.startTimer.bind(this, 10));
     },
+
     stop() {
       clearInterval(this.interval);
     },
+
     reset() {
       clearInterval(this.interval);
       this.print(this.defaultTime);
@@ -46,6 +53,7 @@
       this.elapsedTime = 0;
       this.interval = null;
     },
+
     laps() {
       const lapsId = document.createElement('span');
       lapsId.textContent = $laps.children.length / 2;
@@ -55,6 +63,7 @@
       $laps.appendChild(lapsValue);
     },
   };
+
   document.querySelector('.stopwatch').addEventListener('click', e => {
     if (e.target.textContent === 'Start') {
       $resetLapButton.textContent = 'Lap';
@@ -66,6 +75,7 @@
       e.target.textContent = 'Start';
       stopwatch.stop();
     }
+
     if (e.target.textContent === 'Reset') {
       stopwatch.reset();
       $laps.style.display = 'none';
@@ -74,7 +84,7 @@
     <div class="lap-title">Laps</div>
     <div class="lap-title">Time</div>`;
     }
-    // TODO: innerHTML 초기화가 답인가???
+
     if (e.target.textContent === 'Lap') {
       $laps.style.display = 'grid';
       stopwatch.laps();
