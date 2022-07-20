@@ -11,12 +11,12 @@ const render = str => {
   $autocompleteSuggestList.innerHTML = countryCode
     .filter(country => (str ? _.includes(country[1].toLowerCase(), str.toLowerCase()) : true))
     .map(
-      (country, index) =>
+      ([code, country], index) =>
         `
    <li data-id="${index}" tabindex="${index + 1}">
      <span class="country">
-       <img src="images/flag/${country[0]}.svg" />
-       <span>${country[1]}</span>
+       <img src="images/flag/${code}.svg" />
+       <span>${country}</span>
      </span>
    </li>
    `
@@ -43,7 +43,19 @@ $autocompleteSearch.addEventListener(
 );
 
 $autocompleteSuggestList.addEventListener('focusout', e => {
-  if (e.target.parentNode.lastElementChild === e.target) console.log('jo');
+  if (e.target.parentNode.lastElementChild === e.target) $autocompleteToggleButton.focus();
+});
+
+$autocompleteToggleButton.addEventListener('focusout', e => {
+  if ($suggester.style.display === 'block' && e.key === 'Tab') {
+    $autocompleteSearch.focus();
+  }
+});
+$autocompleteSearch.addEventListener('keydown', e => {
+  if (e.key === 'Tab') {
+    e.preventDefault();
+    $autocompleteSuggestList.firstElementChild.focus();
+  }
 });
 
 // $autocompleteSuggestList.lastElementChild.addEventListener('keydown', e => {
