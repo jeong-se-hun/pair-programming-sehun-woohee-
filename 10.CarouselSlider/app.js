@@ -1,13 +1,15 @@
 // const $carouselControl = document.querySelector('.carousel-control');
 const $carousel = document.querySelector('.carousel');
-
+const transitionTime = 1000;
+let currentId = 0;
+let isMoving = true;
 let width = 0;
+let carouselLength = 0;
 
 const carousel = ($container, images) => {
-  const img = new Image();
-  img.src = '' + images[0];
+  carouselLength = images.length;
   $container.innerHTML = `<div class="carousel-slides">
-  <img src="${images[images.length - 1]}">
+  <img src="${images[carouselLength - 1]}">
   ${images.map(img => `<img src="${img}">`).join('')}
   <img src="${images[0]}">
   </div>
@@ -17,42 +19,47 @@ const carousel = ($container, images) => {
 };
 
 carousel($carousel, ['./movies/movie-1.jpg', './movies/movie-2.jpg', './movies/movie-3.jpg', './movies/movie-4.jpg']);
-const setFrame = () => {
-  $carousel.firstElementChild.style.setProperty('--currentSlide', 1);
-};
 
 window.addEventListener('load', () => {
-  width = document.querySelector('img').getBoundingClientRect().width;
+  width = document.querySelector('img').clientWidth;
   $carousel.style.width = `${width}px`;
-  setFrame();
+  $carousel.firstElementChild.style.setProperty('--currentSlide', 1);
   $carousel.style.opacity = 1;
 });
 
-$carousel.addEventListener('click', e => {
-  $carousel.firstElementChild.style.setProperty('--duration', 1000);
+const moveImg = direction => {
+  isMoving = false;
+  $carousel.firstElementChild.style.setProperty('--duration', transitionTime);
+  // TODO: settimeout 꼭 필요한지 currentId 갱신이 이위치가 맞는지
+  currentId = +$carousel.firstElementChild.style.getPropertyValue('--currentSlide');
+  $carousel.firstElementChild.style.setProperty('--currentSlide', currentId + (direction === 'next' ? 1 : -1));
 
-  if (e.target.classList.contains('next')) {
-    $carousel.firstElementChild.style.setProperty(
-      '--currentSlide',
-      +$carousel.firstElementChild.style.getPropertyValue('--currentSlide') + 1
-    );
-
-    if ($carousel.firstElementChild.style.getPropertyValue('--currentSlide') === '5') {
-      setTimeout(() => {
-        $carousel.firstElementChild.style.setProperty('--duration', 0);
-        $carousel.firstElementChild.style.setProperty('--currentSlide', 1);
-
-        console.log($carousel.firstElementChild.style.getPropertyValue('--currentSlide'));
-      }, 1000);
-    }
-
-    console.log($carousel.firstElementChild.style.getPropertyValue('--currentSlide'));
+  if (direction === 'next' && currentId === carouselLength) {
+    setTimeout(() => {
+      $carousel.firstElementChild.style.setProperty('--duration', 0);
+      $carousel.firstElementChild.style.setProperty('--currentSlide', 1);
+      currentId = 0;
+    }, transitionTime);
   }
 
+  if (direction === 'prev' && currentId === 1) {
+    setTimeout(() => {
+      $carousel.firstElementChild.style.setProperty('--duration', 0);
+      $carousel.firstElementChild.style.setProperty('--currentSlide', 4);
+      currentId = 4;
+    }, transitionTime);
+  }
+
+  setTimeout(() => {
+    isMoving = true;
+  }, transitionTime);
+};
+
+$carousel.addEventListener('click', e => {
+  if (e.target.classList.contains('next')) {
+    if (isMoving) moveImg('next');
+  }
   if (e.target.classList.contains('prev')) {
-    $carousel.firstElementChild.style.setProperty(
-      '--currentSlide',
-      +$carousel.firstElementChild.style.getPropertyValue('--currentSlide') - 1
-    );
+    if (isMoving) moveImg('prev');
   }
 });
