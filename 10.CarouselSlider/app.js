@@ -1,6 +1,6 @@
 // const $carouselControl = document.querySelector('.carousel-control');
 const $carousel = document.querySelector('.carousel');
-const transitionTime = 1000;
+const transitionTime = 500;
 let currentId = 0;
 let isMoving = true;
 let width = 0;
@@ -8,13 +8,14 @@ let carouselLength = 0;
 
 const carousel = ($container, images) => {
   carouselLength = images.length;
-  $container.innerHTML = `<div class="carousel-slides">
-  <img src="${images[carouselLength - 1]}">
-  ${images.map(img => `<img src="${img}">`).join('')}
-  <img src="${images[0]}">
+  $container.innerHTML = `
+  <div class="carousel-slides">
+    <img src="${images[carouselLength - 1]}">
+    ${images.map(img => `<img src="${img}">`).join('')}
+    <img src="${images[0]}">
   </div>
-  <button class="carousel-control prev">&laquo;</button>
-  <button class="carousel-control next">&raquo;</button>
+    <button class="carousel-control prev">&laquo;</button>
+    <button class="carousel-control next">&raquo;</button>
   </img>`;
 };
 

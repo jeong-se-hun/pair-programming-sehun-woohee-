@@ -89,5 +89,7 @@
       $laps.style.display = 'grid';
       stopwatch.laps();
     }
+
+    // 함수형 고려??
   });
 })();
