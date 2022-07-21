@@ -29,6 +29,5 @@
       ? `"${palindromeInputValue}" is a palindrome`
       : `"${palindromeInputValue}" is not a palindrome`;
     palindromeInputValue = '';
-
   });
 })();

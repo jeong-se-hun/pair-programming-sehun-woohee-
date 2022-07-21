@@ -13,9 +13,8 @@
   const $body = document.querySelector('body');
 
   window.addEventListener('DOMContentLoaded', () => {
-    if (window.localStorage.getItem('darkMode') === 'on' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    if (window.localStorage.getItem('darkMode') === 'on' || window.matchMedia('(prefers-color-scheme: dark)').matches)
       $body.classList.add('dark');
-    }
 
     setTimeout(() => {
       $body.classList.remove('hide');
@@ -28,3 +27,4 @@
   });
 })();
 // 해보고 싶은것 : 실시간 다크모드변경이벤트 반영.
+// add랑 toggle을 함수로 뺄수있나?
