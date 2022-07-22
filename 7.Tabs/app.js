@@ -2,7 +2,7 @@
 // prettier-ignore
 (() =>{
 
-  
+  // render 빼기... 
 const state={
 
   tabsData:[],

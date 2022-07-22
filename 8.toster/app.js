@@ -10,6 +10,7 @@
   };
 
   // TODO: render 분리할까요??
+  // todsterlength 추가해야합니더....ㅜ
   const showMessage = element => {
     const state = element.textContent.toLowerCase();
     const $toast = document.createElement('div');

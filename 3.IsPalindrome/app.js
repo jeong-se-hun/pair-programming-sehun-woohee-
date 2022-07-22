@@ -32,6 +32,7 @@
       `"${palindromeInp.value}" is ${checkPalindrome(palindromeInp.value) ? '' : 'not'} a palindrome `;
 
     document.querySelector('.palindrome-input').value = '';
+
   });
 })();
 
