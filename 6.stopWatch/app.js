@@ -177,6 +177,7 @@
 
     laps() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       const lapsFragment = document.createDocumentFragment();
       const lapsId = document.createElement('span');
       const lapsValue = document.createElement('span');
@@ -186,6 +187,8 @@
       lapsFragment.appendChild(lapsValue);
       $laps.append(lapsFragment);
 =======
+=======
+>>>>>>> d756f4d4379088967e0f9518a56fb3e8851bbf29
       const $lapsId = document.createElement('span');
       const $lapsValue = document.createElement('span');
       $lapsId.textContent = $laps.children.length / 2;
@@ -193,7 +196,10 @@
       $laps.append($lapsId);
       $laps.appendChild($lapsValue);
       $laps.style.display = 'grid';
+<<<<<<< HEAD
 >>>>>>> bf52ba9d70c6850d704da1cab645220fd29c2c04
+=======
+>>>>>>> d756f4d4379088967e0f9518a56fb3e8851bbf29
     },
   };
 
