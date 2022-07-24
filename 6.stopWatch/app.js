@@ -99,6 +99,7 @@
 //     // 함수형 고려??
 //   });
 // })();
+
 (() => {
   const $laps = document.querySelector('.laps');
   const [$startStopBtn, $resetLapBtn] = document.querySelectorAll('.control');
@@ -109,8 +110,8 @@
     elapsedTime: 0,
     interval: null,
 
-    print(text) {
-      document.querySelector('.display').textContent = text;
+    print(time) {
+      document.querySelector('.display').textContent = time;
     },
 
     addZero(number) {
@@ -176,30 +177,14 @@
     // },
 
     laps() {
-<<<<<<< HEAD
-<<<<<<< HEAD
       const lapsFragment = document.createDocumentFragment();
       const lapsId = document.createElement('span');
       const lapsValue = document.createElement('span');
       lapsId.textContent = $laps.children.length / 2;
       lapsValue.textContent = this.timeToString(this.elapsedTime);
-      lapsFragment.appendChild(lapsId);
-      lapsFragment.appendChild(lapsValue);
+      lapsFragment.append(lapsId, lapsValue);
       $laps.append(lapsFragment);
-=======
-=======
->>>>>>> d756f4d4379088967e0f9518a56fb3e8851bbf29
-      const $lapsId = document.createElement('span');
-      const $lapsValue = document.createElement('span');
-      $lapsId.textContent = $laps.children.length / 2;
-      $lapsValue.textContent = this.timeToString(this.elapsedTime);
-      $laps.append($lapsId);
-      $laps.appendChild($lapsValue);
       $laps.style.display = 'grid';
-<<<<<<< HEAD
->>>>>>> bf52ba9d70c6850d704da1cab645220fd29c2c04
-=======
->>>>>>> d756f4d4379088967e0f9518a56fb3e8851bbf29
     },
   };
 
@@ -221,3 +206,11 @@
 // $lapsFragment.appendChild($lapsId);
 // $lapsFragment.appendChild($lapsValue);
 // $laps.append($lapsFragment);
+
+// const $lapsId = document.createElement('span');
+// const $lapsValue = document.createElement('span');
+// $lapsId.textContent = $laps.children.length / 2;
+// $lapsValue.textContent = this.timeToString(this.elapsedTime);
+// $laps.append($lapsId);
+// $laps.appendChild($lapsValue);
+// $laps.style.display = 'grid';

@@ -1,21 +1,24 @@
 (() => {
   const $toggleLayer = document.querySelector('.toggle-layer');
   const $toggleInput = document.querySelector('.toggle-input');
-  // TODO:  trim????
+
+  const toggleModal = () => $toggleLayer.classList.toggle('hide');
+  const renderMessage = () => {
+    document.querySelector('.popup-message').textContent = `from popup : ${$toggleInput.value}`;
+  };
 
   document.querySelector('body').addEventListener('click', e => {
     if (e.target.matches(['.toggle-popup', '.cancel', '.toggle-layer'])) {
-      $toggleLayer.classList.toggle('hide');
+      toggleModal();
       $toggleInput.value = '';
     }
   });
 
-  document.querySelector('body').addEventListener('submit', e => {
+  document.querySelector('.toggle-form').addEventListener('submit', e => {
     e.preventDefault();
-    if (!e.target.classList.contains('toggle-form')) return;
-
-    document.querySelector('.popup-message').textContent = `from popup : ${$toggleInput.value}`;
-
-    $toggleLayer.classList.toggle('hide');
+    renderMessage();
+    toggleModal();
   });
 })();
+
+// TODO:  trim????

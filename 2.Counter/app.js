@@ -25,18 +25,26 @@
 // })();
 
 (() => {
+  const $counter = document.querySelector('.counter');
+
   const changeCount = (function () {
-    let num = 0;
+    let count = 0;
+
+    const setCount = count => {
+      $counter.textContent = count;
+    };
 
     return {
       increase() {
-        return ++num;
+        return setCount(++count);
       },
 
       decrease() {
-        return num <= 0 ? 0 : --num;
+        return setCount(count <= 0 ? 0 : --count);
       },
     };
+
+    // 메서드 & 이벤트 합칠지 고민
   })();
 
   document.querySelector('.increase').addEventListener('click', changeCount.increase);
