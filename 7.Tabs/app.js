@@ -2,15 +2,8 @@
 // prettier-ignore
 (() =>{
 
-  // render 빼기... 
-const state={
-
-  tabsData:[],
-  activeTabId:0
-
-}
-
 const $tabs = document.querySelector('.tabs');
+
 const render = () => {
   $tabs.innerHTML = `
   <nav>
@@ -20,7 +13,6 @@ const render = () => {
   </nav>
    ${state.tabsData.map((data, index) => `<div class="tab-content ${index === state.activeTabId ? 'active' : ''}">${data.content}</div>`).join('')}
   `;
-  // TODO: 200? 고정값 사용?
 };
 
 
@@ -61,7 +53,9 @@ $tabs.addEventListener('click', e => {
     document.querySelectorAll('.tab-content').forEach((data, index) => {      
       data.classList.toggle('active',index===state.activeTabId);
     })
-    document.querySelector('.glider').style.left = `${getComputedStyle($tabs).getPropertyValue('--tab-width') *index}px`
+
+    // document.querySelector('.glider').style.left = `${getComputedStyle($tabs).getPropertyValue('--tab-width') *index}px`
+    document.querySelector('.glider').style.transform = `translate3D(${100*index}%,0,0)`
 
   }
 })

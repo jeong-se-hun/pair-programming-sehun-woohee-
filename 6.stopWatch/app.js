@@ -54,13 +54,24 @@
       this.interval = null;
     },
 
+    // laps() {
+    //   const lapsId = document.createElement('span');
+    //   lapsId.textContent = $laps.children.length / 2;
+    //   $laps.appendChild(lapsId);
+    //   const lapsValue = document.createElement('span');
+    //   lapsValue.textContent = this.timeToString(this.elapsedTime);
+    //   $laps.appendChild(lapsValue);
+    // },
+
     laps() {
+      const lapsFragment = document.createDocumentFragment();
       const lapsId = document.createElement('span');
-      lapsId.textContent = $laps.children.length / 2;
-      $laps.appendChild(lapsId);
       const lapsValue = document.createElement('span');
+      lapsId.textContent = $laps.children.length / 2;
       lapsValue.textContent = this.timeToString(this.elapsedTime);
-      $laps.appendChild(lapsValue);
+      lapsFragment.appendChild(lapsId);
+      lapsFragment.appendChild(lapsValue);
+      $laps.append(lapsFragment);
     },
   };
 
