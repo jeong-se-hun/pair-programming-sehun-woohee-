@@ -99,6 +99,7 @@
 //     // 함수형 고려??
 //   });
 // })();
+
 (() => {
   const $laps = document.querySelector('.laps');
   const [$startStopBtn, $resetLapBtn] = document.querySelectorAll('.control');
@@ -109,8 +110,8 @@
     elapsedTime: 0,
     interval: null,
 
-    print(text) {
-      document.querySelector('.display').textContent = text;
+    print(time) {
+      document.querySelector('.display').textContent = time;
     },
 
     addZero(number) {
@@ -176,12 +177,13 @@
     // },
 
     laps() {
-      const $lapsId = document.createElement('span');
-      const $lapsValue = document.createElement('span');
-      $lapsId.textContent = $laps.children.length / 2;
-      $lapsValue.textContent = this.timeToString(this.elapsedTime);
-      $laps.append($lapsId);
-      $laps.appendChild($lapsValue);
+      const lapsFragment = document.createDocumentFragment();
+      const lapsId = document.createElement('span');
+      const lapsValue = document.createElement('span');
+      lapsId.textContent = $laps.children.length / 2;
+      lapsValue.textContent = this.timeToString(this.elapsedTime);
+      lapsFragment.append(lapsId, lapsValue);
+      $laps.append(lapsFragment);
       $laps.style.display = 'grid';
     },
   };
@@ -204,3 +206,11 @@
 // $lapsFragment.appendChild($lapsId);
 // $lapsFragment.appendChild($lapsValue);
 // $laps.append($lapsFragment);
+
+// const $lapsId = document.createElement('span');
+// const $lapsValue = document.createElement('span');
+// $lapsId.textContent = $laps.children.length / 2;
+// $lapsValue.textContent = this.timeToString(this.elapsedTime);
+// $laps.append($lapsId);
+// $laps.appendChild($lapsValue);
+// $laps.style.display = 'grid';

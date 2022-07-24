@@ -17,23 +17,58 @@
 // })();
 
 (() => {
-  const checkPalindrome = str => {
-    const string = str.toUpperCase().replace(/[^A-Za-z0-9가-힣]/gi, '');
-    return string && string.split('').reverse().join('') === string;
+  // 왕따??
+  const $palindromeInp = document.querySelector('.palindrome-input');
+
+  const palindrome = {
+    string: '',
+
+    filterStr(str) {
+      this.string = str.toUpperCase().replace(/[^A-Za-z0-9가-힣]/gi, '');
+    },
+
+    isPalindrome() {
+      this.filterStr($palindromeInp.value);
+      return this.string && this.string.split('').reverse().join('') === this.string;
+    },
+
+    clearInput() {
+      document.querySelector('.palindrome-input').value = '';
+    },
+
+    print() {
+      document.querySelector('.palindrome-result').textContent =
+        // prettier ignore
+        `"${$palindromeInp.value}" is ${this.isPalindrome($palindromeInp.value) ? '' : 'not'} a palindrome `;
+      this.clearInput();
+    },
   };
 
   document.querySelector('.palindrome-checker').addEventListener('submit', e => {
     e.preventDefault();
-
-    const palindromeInp = document.querySelector('.palindrome-input');
-
-    document.querySelector('.palindrome-result').innerHTML =
-      // prettier ignore
-      `"${palindromeInp.value}" is ${checkPalindrome(palindromeInp.value) ? '' : 'not'} a palindrome `;
-
-    document.querySelector('.palindrome-input').value = '';
+    palindrome.print();
   });
 })();
+
+// (() => {
+// const isPalindrome = str => {
+//   const string = str.toUpperCase().replace(/[^A-Za-z0-9가-힣]/gi, '');
+
+//   return string && string.split('').reverse().join('') === string;
+// };
+
+//   document.querySelector('.palindrome-checker').addEventListener('submit', e => {
+//     e.preventDefault();
+
+//     const $palindromeInp = document.querySelector('.palindrome-input');
+
+//     document.querySelector('.palindrome-result').innerHTML =
+//       // prettier ignore
+//       `"${$palindromeInp.value}" is ${isPalindrome($palindromeInp.value) ? '' : 'not'} a palindrome `;
+
+//     document.querySelector('.palindrome-input').value = '';
+//   });
+// })();
 
 // - test -
 // - “race car” ⇒ true

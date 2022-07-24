@@ -11,21 +11,28 @@
 (() => {
   const $body = document.querySelector('body');
 
-  window.addEventListener('DOMContentLoaded', () => {
+  const isDark = () =>
     window.localStorage.getItem('darkMode') !== null
-      ? $body.classList.toggle('dark', window.localStorage.getItem('darkMode') === 'on')
-      : $body.classList.toggle('dark', window.matchMedia('(prefers-color-scheme: dark)').matches);
+      ? window.localStorage.getItem('darkMode') === 'on'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-    setTimeout(() => {
-      $body.classList.remove('hide');
-    }, 200);
+  const setTheme = setLocal => {
+    if (setLocal) window.localStorage.setItem('darkMode', isDark() ? 'off' : 'on');
+    $body.classList.toggle('dark', isDark());
+  };
+  // TODO: render가 최선인가 변수명 더 고민해보자
+  const render = () => {
+    $body.classList.remove('hide');
+  };
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setTheme();
+    setTimeout(render, 200);
   });
 
-  document.querySelector('.toggle-button').addEventListener('click', () => {
-    window.localStorage.setItem('darkMode', window.localStorage.getItem('darkMode') === 'on' ? 'off' : 'on');
-    $body.classList.toggle('dark');
-  });
+  document.querySelector('.toggle-button').addEventListener('click', () => setTheme(true));
 })();
+
 // 해보고 싶은것 : 실시간 다크모드변경이벤트 반영.
 // add랑 toggle을 함수로 뺄수있나?
 
