@@ -1,46 +1,22 @@
-// (() => {
-//   const changeCount = (function () {
-//     let num = 0;
-
-//     return {
-//       increase() {
-//         return ++num;
-//       },
-
-//       decrease() {
-//         return num <= 0 ? 0 : --num;
-//       },
-//     };
-//   })();
-
-//   document.querySelector('.container').addEventListener('click', e => {
-//     console.log('AA');
-//     const $counter = document.querySelector('.counter');
-//     const buttonClass = e.target.closest('button').classList;
-
-//     if (buttonClass.contains('increase')) $counter.textContent = changeCount.increase();
-
-//     if (buttonClass.contains('decrease')) $counter.textContent = changeCount.decrease();
-//   });
-// })();
-
 (() => {
   const $counter = document.querySelector('.counter');
 
   const changeCount = (function () {
     let count = 0;
 
-    const setCount = count => {
+    const render = () => {
       $counter.textContent = count;
     };
 
     return {
       increase() {
-        return setCount(++count);
+        count += 1;
+        render();
       },
 
       decrease() {
-        return setCount(count <= 0 ? 0 : --count);
+        if (count > 0) count -= 1;
+        render();
       },
     };
 

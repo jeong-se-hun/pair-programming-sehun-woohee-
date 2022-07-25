@@ -17,30 +17,21 @@
 // })();
 
 (() => {
-  // 왕따??
   const $palindromeInp = document.querySelector('.palindrome-input');
+  let palindromeValue = '';
 
   const palindrome = {
-    string: '',
-
-    filterStr(str) {
-      this.string = str.toUpperCase().replace(/[^A-Za-z0-9가-힣]/gi, '');
-    },
-
-    isPalindrome() {
-      this.filterStr($palindromeInp.value);
-      return this.string && this.string.split('').reverse().join('') === this.string;
-    },
-
-    clearInput() {
-      document.querySelector('.palindrome-input').value = '';
+    isPalindrome(str) {
+      palindromeValue = str.toUpperCase().replace(/[^A-Za-z0-9가-힣]/gi, '');
+      return palindromeValue && palindromeValue.split('').reverse().join('') === palindromeValue;
     },
 
     print() {
       document.querySelector('.palindrome-result').textContent =
         // prettier ignore
         `"${$palindromeInp.value}" is ${this.isPalindrome($palindromeInp.value) ? '' : 'not'} a palindrome `;
-      this.clearInput();
+
+      document.querySelector('.palindrome-input').value = '';
     },
   };
 
