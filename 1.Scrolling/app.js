@@ -1,16 +1,15 @@
 (() => {
   const $scrollIcon = document.querySelector('.scroll-icon');
+  const scrollIconLocation = 300;
 
-  const scrollIconToggle = () => {
-    $scrollIcon.style.display = window.pageYOffset > 300 ? 'block' : 'none';
-  };
+  window.addEventListener(
+    'scroll',
+    _.throttle(() => {
+      $scrollIcon.style.display = window.pageYOffset > scrollIconLocation ? 'block' : 'none';
+    }, 500)
+  );
 
-  const goToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  // prettier-ignore
-  window.addEventListener('scroll', _.throttle(() => scrollIconToggle(), 500));
-
-  $scrollIcon.addEventListener('click', goToTop);
+  $scrollIcon.addEventListener('click', window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 
 // (() => {

@@ -9,7 +9,7 @@
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-    <script defer type="module" src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </head>
   <body>
     <h1 class="title">Autocomplete</h1>
@@ -23,18 +23,18 @@
           <i class="bx bx-caret-down"></i>
         </button>
       </div>
-      <div class="autocomplete-suggester">
+      <div class="autocomplete-suggester hide">
         <div class="autocomplete-dropdown">
           <input type="text" class="autocomplete-search" placeholder="Select a country" />
           <ul class="autocomplete-suggest-list">
             <!--
-            <li data-id="1" tabindex="1">
+            <li tabindex="0">
               <span class="country">
                 <img src="images/flag/kr.svg" />
                 <span>South Korea</span>
               </span>
             </li>
-            <li data-id="2" tabindex="2">
+            <li tabindex="0">
               <span class="country">
                 <img src="images/flag/kp.svg" />
                 <span>North Korea</span>
