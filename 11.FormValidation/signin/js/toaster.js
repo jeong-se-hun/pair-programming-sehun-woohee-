@@ -1,4 +1,4 @@
-const $body = document.querySelector('body');
+const $body = document.body;
 
 const render = () => {
   [...document.querySelectorAll('.toast')].forEach(($toast, i, arr) => {

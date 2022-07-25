@@ -1,5 +1,5 @@
 (() => {
-  const $body = document.querySelector('body');
+  const $body = document.body;
 
   const toaster = {
     set() {

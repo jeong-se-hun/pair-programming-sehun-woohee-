@@ -34,7 +34,7 @@
     isActive = !isActive;
   };
 
-  document.querySelector('body').addEventListener('click', e => {
+  document.body.addEventListener('click', e => {
     if (e.target.matches(['.toggle-popup', '.cancel', '.toggle-layer'])) {
       displayToggle();
       $toggleInput.value = '';

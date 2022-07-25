@@ -107,30 +107,27 @@ const autocomplete = {
     if ($autocompleteSuggestList.textContent === '') $autocompleteSuggestList.innerHTML = `No results matched '${str}'`;
   },
 
-  on() {
-    $suggester.style.display = 'block';
-  },
-  off() {
-    $suggester.style.display = 'none';
+  toggle(swap) {
+    if (swap === 'off') $suggester.style.display = 'none';
+    else $suggester.style.display = $suggester.style.display === 'block' ? 'none' : 'block';
   },
 };
 
 // focus 함수 뺄까?
 
 $autocompleteToggleButton.addEventListener('click', () => {
-  $suggester.style.display === 'block' ? autocomplete.off() : autocomplete.on();
+  autocomplete.toggle();
   autocomplete.render(inputValue);
   $autocompleteSearch.focus();
 });
 
-document.querySelector('body').addEventListener('click', e => {
-  if (!e.target.closest('.autocomplete')) autocomplete.off();
+document.body.addEventListener('click', e => {
+  if (!e.target.closest('.autocomplete')) autocomplete.toggle('off');
 });
 
 $autocompleteSuggestList.addEventListener('click', e => {
   const $li = e.target.closest('li');
-  if (!$li) return;
-  $autocompleteToggleButton.querySelector('span').innerHTML = $li.innerHTML;
+  if ($li) $autocompleteToggleButton.querySelector('span').innerHTML = $li.innerHTML;
 });
 
 $autocompleteSearch.addEventListener(
@@ -143,13 +140,6 @@ $autocompleteSearch.addEventListener(
     { leading: false }
   )
 );
-
-$autocompleteSearch.addEventListener('keydown', e => {
-  if (e.key === 'Tab') {
-    e.preventDefault();
-    $autocompleteSuggestList.children[0].focus();
-  }
-});
 
 $autocompleteSuggestList.addEventListener('keydown', e => {
   if (e.key === 'ArrowUp') {
