@@ -9,7 +9,6 @@
 // };
 
 const renderInfo = (e, { valid, message }) => {
-  // e, boolean
   e.target.parentNode.querySelector('.icon-success').classList.toggle('hidden', !valid);
   e.target.parentNode.querySelector('.icon-error').classList.toggle('hidden', valid);
   e.target.parentNode.querySelector('.error').textContent = valid ? '' : message;

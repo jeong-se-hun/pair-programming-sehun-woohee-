@@ -83,12 +83,11 @@
     },
   };
 
-  /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
   $startStopBtn.addEventListener('click', () => {
     if (isRunning) stopwatch.stop();
     else stopwatch.start();
   });
+
   $resetLapBtn.addEventListener('click', () => {
     if (isRunning) stopwatch.laps();
     else stopwatch.reset();

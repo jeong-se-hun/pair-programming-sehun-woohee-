@@ -5,12 +5,7 @@ if (!theme) {
   theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-/// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 window.addEventListener('DOMContentLoaded', () => {
-  //  윈도우 테마 저장유무 고민
-  // window.localStorage.setItem('theme', theme);
-
   document.body.classList.toggle('dark', theme === 'dark');
 
   setTimeout(() => document.body.classList.remove('hide'), +transitionTime * 1000);

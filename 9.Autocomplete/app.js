@@ -113,8 +113,6 @@ const autocomplete = {
   },
 };
 
-// focus 함수 뺄까?
-
 $autocompleteToggleButton.addEventListener('click', () => {
   autocomplete.toggle();
   autocomplete.render(inputValue);

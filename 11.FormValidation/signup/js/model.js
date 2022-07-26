@@ -5,6 +5,7 @@ const state = {
   nameValid: false,
   passwordMatch: false,
 };
+
 const errorMessage = {
   email: '이메일 형식에 맞게 입력해 주세요.',
   password: '영문 또는 숫자를 6~12자 입력하세요.',

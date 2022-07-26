@@ -20,14 +20,18 @@ import toaster from './toaster.js';
 
 document.body.addEventListener(
   'input',
-  _.throttle(e => {
-    if (/id/.test(e.target.id)) renderInfo(e, check.email(e));
-    if (/password/.test(e.target.id)) {
-      if (e.target.id === 'signup-confirm-password') renderInfo(e, check.pswMatch(e));
-      else renderInfo(e, check.password(e));
-    }
-    if (/name/.test(e.target.id)) renderInfo(e, check.name(e));
-  })
+  _.throttle(
+    e => {
+      if (/id/.test(e.target.id)) renderInfo(e, check.email(e));
+      if (/password/.test(e.target.id)) {
+        if (e.target.id === 'signup-confirm-password') renderInfo(e, check.pswMatch(e));
+        else renderInfo(e, check.password(e));
+      }
+      if (/name/.test(e.target.id)) renderInfo(e, check.name(e));
+    },
+    400,
+    { leading: false }
+  )
 );
 
 document.body.addEventListener('click', e => {
@@ -49,7 +53,7 @@ document.body.addEventListener('submit', e => {
   if (e.target.closest('form').classList.contains('signup')) {
     toaster.render({ type: 'success', title: 'Well done!', message: 'signup Successfully' });
     // eslint-disable-next-line no-console
-    console.log('POST / signin', {
+    console.log('POST / signup', {
       email: `${document.querySelector('#signup-userid').value}`,
       name: `${document.querySelector('#signup-name').value}`,
       password: `${document.querySelector('#signup-password').value}`,
@@ -58,3 +62,5 @@ document.body.addEventListener('submit', e => {
 
   if (e.target.classList.contains('toast-close')) toaster.remove(e.target.parentNode);
 });
+
+// 콘솔에 비밀번호 확인 도 포함하기
