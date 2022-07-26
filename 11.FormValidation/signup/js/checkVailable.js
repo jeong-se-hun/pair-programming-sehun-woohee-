@@ -2,10 +2,10 @@
 import showMessage from './toaster.js';
 
 const checkValiable = e => {
-  const emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
   const pswReg = /^[A-Za-z0-9]{6,12}$/;
 
   if (e.target.nextElementSibling.textContent === 'email') {
+    const emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
     e.target.parentNode
       .querySelector('.icon-success')
       .classList.toggle('hidden', !emailReg.test(e.target.value) || !e.target.value);
