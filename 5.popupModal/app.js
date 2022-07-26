@@ -1,4 +1,5 @@
 const $toggleInput = document.querySelector('.toggle-input');
+const $popupMessage = document.querySelector('.popup-message');
 let isActive = false;
 
 const displayToggle = () => {
@@ -7,7 +8,12 @@ const displayToggle = () => {
 };
 
 document.body.addEventListener('click', e => {
-  if (e.target.matches(['.toggle-popup', '.cancel', '.toggle-layer'])) {
+  if (e.target.matches(['.toggle-popup', '.cancel'])) {
+    displayToggle();
+    $toggleInput.value = '';
+    $popupMessage.textContent = '';
+  }
+  if (e.target.classList.contains('toggle-layer')) {
     displayToggle();
     $toggleInput.value = '';
   }
@@ -16,7 +22,5 @@ document.body.addEventListener('click', e => {
 document.querySelector('.toggle-form').addEventListener('submit', e => {
   e.preventDefault();
   displayToggle();
-  document.querySelector('.popup-message').textContent = `from popup : ${$toggleInput.value}`;
+  $popupMessage.textContent = `from popup : ${$toggleInput.value}`;
 });
-
-// 토글시 텍스트 초기화

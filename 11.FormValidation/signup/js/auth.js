@@ -57,10 +57,9 @@ document.body.addEventListener('submit', e => {
       email: `${document.querySelector('#signup-userid').value}`,
       name: `${document.querySelector('#signup-name').value}`,
       password: `${document.querySelector('#signup-password').value}`,
+      passwordMatch: `${document.querySelector('#signup-confirm-password').value}`,
     });
   }
 
   if (e.target.classList.contains('toast-close')) toaster.remove(e.target.parentNode);
 });
-
-// 콘솔에 비밀번호 확인 도 포함하기
