@@ -21,6 +21,8 @@ document.querySelector('.palindrome-checker').addEventListener('submit', e => {
   palindrome.print();
 });
 
+//
+
 // 리팩토링 전 코드
 
 // (() => {

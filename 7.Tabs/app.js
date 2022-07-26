@@ -50,16 +50,18 @@ const fetchTabsData = () => new Promise(resolve => {
 });
 
 window.addEventListener('DOMContentLoaded', async () => {
-  const response = await fetchTabsData();
-  tabs.render(response);
-  document.querySelector('.spinner').style.display = 'none';
+  try {
+    const response = await fetchTabsData();
+    tabs.render(response);
+    document.querySelector('.spinner').style.display = 'none';
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 $tabs.addEventListener('click', e => {
   if (e.target.classList.contains('tab')) tabs.active(e.target);
 });
-
-// 에러처리 안함
 
 // 정보라고 다 스테이트가 아니고 변하는 것이 상태
 // left 는 리플로우를 일으킴 translate 를 쓰는 것이 좋다. 3D를 쓸것 gpu를 쓰면 애니메이션이 부드럽고 컴퓨터가 스트레스를 덜 받음
