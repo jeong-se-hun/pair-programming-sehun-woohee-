@@ -1,6 +1,7 @@
 // const $carouselControl = document.querySelector('.carousel-control');
 const $carousel = document.querySelector('.carousel');
 const transitionTime = 500;
+
 let currentId = 0;
 let isMoving = true;
 let width = 0;

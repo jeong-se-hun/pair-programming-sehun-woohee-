@@ -1,39 +1,38 @@
-(() => {
-  const $tabs = document.querySelector('.tabs');
+const $tabs = document.querySelector('.tabs');
 
-  const tabs = {
-    render(tabData) {
-      $tabs.style.setProperty('--tabs-length', tabData.length);
-      // prettier-ignore
-      $tabs.innerHTML = `
+const tabs = {
+  render(tabData) {
+    $tabs.style.setProperty('--tabs-length', tabData.length);
+    // prettier-ignore
+    $tabs.innerHTML = `
       <nav>
       ${tabData.map((data, index) => `<div class="tab" data-index="${index}">${data.title}</div>`).join('')}
         <span class="glider">
         </span>
       </nav>
         ${tabData.map((data, index) => `<div class="tab-content ${index === 0 ? 'active' : ''}">${data.content}</div>`).join('')}`;
-    },
+  },
 
-    changeActiveTab(index) {
-      document.querySelector('.glider').style.transform = `translate3D(${100 * index}%,0,0)`;
-    },
+  activeTab(index) {
+    document.querySelector('.glider').style.transform = `translate3D(${100 * index}%,0,0)`;
+  },
 
-    changeActiveContent(index) {
-      document.querySelectorAll('.tab-content').forEach((data, dataIndex) => {
-        data.classList.toggle('active', dataIndex === +index);
-      });
-    },
+  activeContent(index) {
+    document.querySelectorAll('.tab-content').forEach((data, dataIndex) => {
+      data.classList.toggle('active', dataIndex === +index);
+    });
+  },
 
-    changeView(currentTab) {
-      const { index } = currentTab.dataset;
+  active(currentTab) {
+    const { index } = currentTab.dataset;
 
-      this.changeActiveTab(index);
-      this.changeActiveContent(index);
-    },
-  };
+    this.activeTab(index);
+    this.activeContent(index);
+  },
+};
 
-  // prettier-ignore
-  const fetchTabsData = () => new Promise(resolve => {
+// prettier-ignore
+const fetchTabsData = () => new Promise(resolve => {
   setTimeout(() => resolve([
     {
       title: 'HTML',
@@ -49,22 +48,18 @@
     },
   ]), 1000);
 });
-  // const funcData = async () => {
-  //   const response = await fetchTabsData();
-  //   tabs.render(response);
-  //   document.querySelector('.spinner').style.display = 'none';
-  // };
 
-  window.addEventListener('DOMContentLoaded', async () => {
-    const response = await fetchTabsData();
-    tabs.render(response);
-    document.querySelector('.spinner').style.display = 'none';
-  });
+window.addEventListener('DOMContentLoaded', async () => {
+  const response = await fetchTabsData();
+  tabs.render(response);
+  document.querySelector('.spinner').style.display = 'none';
+});
 
-  $tabs.addEventListener('click', e => {
-    if (e.target.classList.contains('tab')) tabs.changeView(e.target);
-  });
-})();
+$tabs.addEventListener('click', e => {
+  if (e.target.classList.contains('tab')) tabs.active(e.target);
+});
+
+// 에러처리 안함
 
 // 정보라고 다 스테이트가 아니고 변하는 것이 상태
 // left 는 리플로우를 일으킴 translate 를 쓰는 것이 좋다. 3D를 쓸것 gpu를 쓰면 애니메이션이 부드럽고 컴퓨터가 스트레스를 덜 받음

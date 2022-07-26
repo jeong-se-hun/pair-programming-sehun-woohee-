@@ -1,3 +1,28 @@
+const $palindromeInp = document.querySelector('.palindrome-input');
+let palindromeValue = '';
+
+const palindrome = {
+  isPalindrome(str) {
+    palindromeValue = str.toUpperCase().replace(/[^A-Za-z0-9가-힣]/gi, '');
+    return palindromeValue && palindromeValue.split('').reverse().join('') === palindromeValue;
+  },
+
+  print() {
+    document.querySelector('.palindrome-result').textContent =
+      // prettier ignore
+      `"${$palindromeInp.value}" is ${this.isPalindrome($palindromeInp.value) ? '' : 'not'} a palindrome `;
+
+    document.querySelector('.palindrome-input').value = '';
+  },
+};
+
+document.querySelector('.palindrome-checker').addEventListener('submit', e => {
+  e.preventDefault();
+  palindrome.print();
+});
+
+// 리팩토링 전 코드
+
 // (() => {
 //   const $palindromeForm = document.querySelector('.palindrome-checker');
 
@@ -15,31 +40,6 @@
 //     palindromeInputValue = '';
 //   });
 // })();
-
-(() => {
-  const $palindromeInp = document.querySelector('.palindrome-input');
-  let palindromeValue = '';
-
-  const palindrome = {
-    isPalindrome(str) {
-      palindromeValue = str.toUpperCase().replace(/[^A-Za-z0-9가-힣]/gi, '');
-      return palindromeValue && palindromeValue.split('').reverse().join('') === palindromeValue;
-    },
-
-    print() {
-      document.querySelector('.palindrome-result').textContent =
-        // prettier ignore
-        `"${$palindromeInp.value}" is ${this.isPalindrome($palindromeInp.value) ? '' : 'not'} a palindrome `;
-
-      document.querySelector('.palindrome-input').value = '';
-    },
-  };
-
-  document.querySelector('.palindrome-checker').addEventListener('submit', e => {
-    e.preventDefault();
-    palindrome.print();
-  });
-})();
 
 // (() => {
 // const isPalindrome = str => {

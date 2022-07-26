@@ -47,7 +47,7 @@
   // TODO: render 분리할까요??
 
   $body.addEventListener('click', e => {
-    if (e.target.textContent === 'Success')
+    if (e.target.classList.contains(''))
       toaster.render({ type: 'success', title: 'Well done!', message: 'this is a success alert' });
     if (e.target.textContent === 'Error')
       toaster.render({ type: 'error', title: 'Check it out!', message: 'this is an error alert' });
