@@ -1,5 +1,6 @@
 const $toggleInput = document.querySelector('.toggle-input');
 const $popupMessage = document.querySelector('.popup-message');
+
 let isActive = false;
 
 const displayToggle = () => {
