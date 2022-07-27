@@ -7,7 +7,7 @@ const palindrome = {
     return palindromeValue && palindromeValue.split('').reverse().join('') === palindromeValue;
   },
 
-  print() {
+  render() {
     document.querySelector('.palindrome-result').textContent =
       // prettier ignore
       `"${$palindromeInp.value}" is ${this.isPalindrome($palindromeInp.value) ? '' : 'not'} a palindrome `;
@@ -18,7 +18,7 @@ const palindrome = {
 
 document.querySelector('.palindrome-checker').addEventListener('submit', e => {
   e.preventDefault();
-  palindrome.print();
+  palindrome.render();
 });
 
 //
