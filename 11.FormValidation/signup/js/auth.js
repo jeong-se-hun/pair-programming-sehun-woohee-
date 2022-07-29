@@ -18,27 +18,23 @@ import toaster from './toaster.js';
 
 // 링크를 누를 시에는 페이지 전환이 이루어진다.
 
-document.body.addEventListener(
-  'input',
-  _.throttle(
-    e => {
-      if (/id/.test(e.target.id)) renderInfo(e, check.email(e));
-      if (/password/.test(e.target.id)) {
-        if (e.target.id === 'signup-confirm-password') renderInfo(e, check.pswMatch(e));
-        else renderInfo(e, check.password(e));
-      }
-      if (/name/.test(e.target.id)) renderInfo(e, check.name(e));
-    },
-    400,
-    { leading: false }
-  )
+const $signinForm = document.querySelector('.signin.form');
+const $signupForm = document.querySelector('.signup.form');
+
+const isValid = _.throttle(
+  e => {
+    if (/id/.test(e.target.id)) renderInfo(e, check.email(e));
+    if (/password/.test(e.target.id)) {
+      if (e.target.id === 'signup-confirm-password') renderInfo(e, check.pswMatch(e));
+      else renderInfo(e, check.password(e));
+    }
+    if (/name/.test(e.target.id)) renderInfo(e, check.name(e));
+  },
+  400,
+  { leading: false }
 );
 
-document.body.addEventListener('click', e => {
-  if (e.target.matches('.link>a')) document.querySelector('.signup').classList.toggle('hidden');
-});
-
-document.body.addEventListener('submit', e => {
+const submitForm = e => {
   e.preventDefault();
 
   if (e.target.closest('form').classList.contains('signin')) {
@@ -62,4 +58,12 @@ document.body.addEventListener('submit', e => {
   }
 
   if (e.target.classList.contains('toast-close')) toaster.remove(e.target.parentNode);
+};
+
+[$signinForm, $signupForm].forEach($form => {
+  $form.onsubmit = submitForm;
+  $form.oninput = isValid;
+  $form.onclick = e => {
+    if (e.target.matches('.link>a')) document.querySelector('.signup').classList.toggle('hidden');
+  };
 });
