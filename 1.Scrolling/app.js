@@ -9,5 +9,3 @@ window.addEventListener(
 );
 
 $scrollIcon.addEventListener('click', window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-// 변수명 대문자?
